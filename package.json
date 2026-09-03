@@ -1,5 +1,6 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "roncar-automotive-shine",
+  "description": "Website oficial da RONCAR Estética Automotiva - Icaraí, Niterói",
   "private": true,
   "sideEffects": false,
   "type": "module",
