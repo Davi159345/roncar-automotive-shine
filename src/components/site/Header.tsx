@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
-import { LOGO, NAV, WA_DEFAULT } from "@/lib/roncar";
+import { LOGO, NAV, WA_DEFAULT, openExternalLink } from "@/lib/roncar";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -63,7 +63,11 @@ export function Header() {
           href={WA_DEFAULT}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto hidden items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_8px_28px_-10px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110 xl:ml-4 xl:inline-flex"
+          onClick={(e) => {
+            e.preventDefault();
+            openExternalLink(WA_DEFAULT);
+          }}
+          className="ml-auto hidden items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_8px_28px_-10px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110 xl:ml-4 xl:inline-flex cursor-pointer"
         >
           <MessageCircle className="h-4 w-4" />
           Agendar pelo WhatsApp
@@ -101,8 +105,12 @@ export function Header() {
             href={WA_DEFAULT}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="mt-4 mb-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpen(false);
+              openExternalLink(WA_DEFAULT);
+            }}
+            className="mt-4 mb-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             Agendar pelo WhatsApp

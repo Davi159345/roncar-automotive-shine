@@ -1,8 +1,10 @@
 import { MessageCircle, Phone, Clock } from "lucide-react";
-import { PHOTOS, WHATSAPP_DISPLAY, wa } from "@/lib/roncar";
+import { PHOTOS, WHATSAPP_DISPLAY, wa, openExternalLink } from "@/lib/roncar";
 import { Reveal } from "./Reveal";
 
 export function Contact() {
+  const contactWaUrl = wa("Olá, RONCAR! Quero cuidar do meu carro. Podemos agendar?");
+
   return (
     <section id="contato" className="relative isolate overflow-hidden border-t border-border/50">
       <img
@@ -26,10 +28,14 @@ export function Contact() {
 
         <Reveal delay={90}>
           <a
-            href={wa("Olá, RONCAR! Quero cuidar do meu carro. Podemos agendar?")}
+            href={contactWaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex items-center gap-3 rounded-full bg-accent px-9 py-5 font-display text-base font-extrabold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_22px_60px_-20px_var(--accent)] transition-transform duration-300 hover:-translate-y-1 hover:brightness-110"
+            onClick={(e) => {
+              e.preventDefault();
+              openExternalLink(contactWaUrl);
+            }}
+            className="mt-10 inline-flex items-center gap-3 rounded-full bg-accent px-9 py-5 font-display text-base font-extrabold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_22px_60px_-20px_var(--accent)] transition-transform duration-300 hover:-translate-y-1 hover:brightness-110 cursor-pointer"
           >
             <MessageCircle className="h-5 w-5" />
             Agendar pelo WhatsApp
@@ -38,7 +44,10 @@ export function Contact() {
 
         <Reveal delay={140}>
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-3xl border border-border bg-card/80 p-6 backdrop-blur">
+            <div
+              onClick={() => openExternalLink(contactWaUrl)}
+              className="rounded-3xl border border-border bg-card/80 p-6 backdrop-blur cursor-pointer transition-all hover:border-accent/40"
+            >
               <Phone className="mx-auto h-5 w-5 text-accent" />
               <h3 className="mt-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 WhatsApp

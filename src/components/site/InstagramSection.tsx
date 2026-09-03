@@ -1,5 +1,5 @@
 import { Instagram } from "lucide-react";
-import { INSTAGRAM_URL, LOGO, PHOTOS } from "@/lib/roncar";
+import { INSTAGRAM_URL, LOGO, PHOTOS, openExternalLink } from "@/lib/roncar";
 import { Reveal } from "./Reveal";
 
 const STRIP = [PHOTOS.silver, PHOTOS.moto, PHOTOS.tucson2, PHOTOS.green];
@@ -37,7 +37,11 @@ export function InstagramSection() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_18px_45px_-18px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110"
+            onClick={(e) => {
+              e.preventDefault();
+              openExternalLink(INSTAGRAM_URL);
+            }}
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_18px_45px_-18px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110 cursor-pointer"
           >
             <Instagram className="h-4.5 w-4.5" />
             Ver Instagram
@@ -52,7 +56,11 @@ export function InstagramSection() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-square overflow-hidden rounded-2xl border border-border"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openExternalLink(INSTAGRAM_URL);
+                }}
+                className="group relative aspect-square overflow-hidden rounded-2xl border border-border cursor-pointer"
               >
                 <img
                   src={src}

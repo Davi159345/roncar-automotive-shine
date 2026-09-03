@@ -1,6 +1,6 @@
 import { Droplets, Sparkles, Disc3, ShieldCheck, Gem, Wrench, MessageCircle } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { SERVICES, wa } from "@/lib/roncar";
+import { SERVICES, wa, openExternalLink } from "@/lib/roncar";
 import { Reveal } from "./Reveal";
 
 const ICONS: Record<string, LucideIcon> = {
@@ -13,6 +13,8 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 export function Services() {
+  const serviceWaUrl = wa("Olá! Quero agendar um serviço na RONCAR. Pode me passar os horários?");
+
   return (
     <section id="servicos" className="relative border-t border-border/50 bg-secondary/30 py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -48,10 +50,14 @@ export function Services() {
         <Reveal delay={120}>
           <div className="mt-14 flex justify-center">
             <a
-              href={wa("Olá! Quero agendar um serviço na RONCAR. Pode me passar os horários?")}
+              href={serviceWaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_18px_45px_-18px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110"
+              onClick={(e) => {
+                e.preventDefault();
+                openExternalLink(serviceWaUrl);
+              }}
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_18px_45px_-18px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110 cursor-pointer"
             >
               <MessageCircle className="h-4.5 w-4.5" />
               Quero agendar meu serviço

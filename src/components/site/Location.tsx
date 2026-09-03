@@ -1,5 +1,5 @@
 import { MapPin, Navigation, Clock } from "lucide-react";
-import { ADDRESS, MAPS_EMBED, MAPS_URL } from "@/lib/roncar";
+import { ADDRESS, MAPS_EMBED, MAPS_URL, openExternalLink } from "@/lib/roncar";
 import { Reveal } from "./Reveal";
 
 export function Location() {
@@ -40,7 +40,11 @@ export function Location() {
                 href={MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openExternalLink(MAPS_URL);
+                }}
+                className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110 cursor-pointer"
               >
                 <Navigation className="h-4 w-4" />
                 Como chegar

@@ -1,4 +1,4 @@
-import { LOGO, NAV, ADDRESS, WHATSAPP_DISPLAY, WA_DEFAULT, INSTAGRAM_URL } from "@/lib/roncar";
+import { LOGO, NAV, ADDRESS, WHATSAPP_DISPLAY, WA_DEFAULT, INSTAGRAM_URL, openExternalLink } from "@/lib/roncar";
 import { MessageCircle, Instagram, MapPin, Phone, ShieldCheck, Heart } from "lucide-react";
 
 export function Footer() {
@@ -32,8 +32,12 @@ export function Footer() {
                 href={WA_DEFAULT}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openExternalLink(WA_DEFAULT);
+                }}
                 aria-label="WhatsApp da RONCAR"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_rgba(245,166,35,0.25)]"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_rgba(245,166,35,0.25)] cursor-pointer"
               >
                 <MessageCircle className="h-4.5 w-4.5" />
               </a>
@@ -41,8 +45,12 @@ export function Footer() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openExternalLink(INSTAGRAM_URL);
+                }}
                 aria-label="Instagram da RONCAR"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_rgba(245,166,35,0.25)]"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-all hover:border-accent hover:text-accent hover:shadow-[0_0_15px_rgba(245,166,35,0.25)] cursor-pointer"
               >
                 <Instagram className="h-4.5 w-4.5" />
               </a>

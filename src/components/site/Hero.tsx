@@ -1,5 +1,5 @@
 import { MessageCircle, ChevronDown } from "lucide-react";
-import { PHOTOS, WA_DEFAULT } from "@/lib/roncar";
+import { PHOTOS, WA_DEFAULT, openExternalLink } from "@/lib/roncar";
 
 export function Hero() {
   return (
@@ -38,7 +38,11 @@ export function Hero() {
               href={WA_DEFAULT}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_18px_45px_-18px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110"
+              onClick={(e) => {
+                e.preventDefault();
+                openExternalLink(WA_DEFAULT);
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-accent-foreground shadow-[0_18px_45px_-18px_var(--accent)] transition-transform duration-300 hover:-translate-y-0.5 hover:brightness-110 cursor-pointer"
             >
               <MessageCircle className="h-4.5 w-4.5" />
               Agendar pelo WhatsApp

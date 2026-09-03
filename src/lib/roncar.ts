@@ -27,7 +27,7 @@ export const WHATSAPP_NUMBER = "5521969661616";
 export const WHATSAPP_DISPLAY = "(21) 96966-1616";
 
 export const wa = (message: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`;
 
 export const WA_DEFAULT = wa(
   "Olá! Vim pelo site da RONCAR e gostaria de agendar um serviço para o meu veículo.",
@@ -42,6 +42,18 @@ export const MAPS_EMBED =
   "https://www.google.com/maps?q=" +
   encodeURIComponent("Rua Geraldo Martins, 494, Icaraí, Niterói - RJ, 24220-070") +
   "&output=embed";
+
+export function openExternalLink(url: string) {
+  if (typeof window === "undefined") return;
+  try {
+    const win = window.open(url, "_blank", "noopener,noreferrer");
+    if (!win || win.closed || typeof win.closed === "undefined") {
+      window.location.href = url;
+    }
+  } catch {
+    window.location.href = url;
+  }
+}
 
 export const NAV = [
   { label: "Início", href: "#inicio" },

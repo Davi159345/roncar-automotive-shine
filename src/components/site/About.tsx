@@ -1,8 +1,10 @@
-import { PHOTOS, wa } from "@/lib/roncar";
+import { PHOTOS, wa, openExternalLink } from "@/lib/roncar";
 import { MessageCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 export function About() {
+  const whatsappUrl = wa("Olá, RONCAR! Gostaria de falar com vocês sobre um serviço.");
+
   return (
     <section id="sobre" className="relative border-t border-border/50 py-24 sm:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
@@ -65,10 +67,14 @@ export function About() {
           </dl>
 
           <a
-            href={wa("Olá, RONCAR! Gostaria de falar com vocês sobre um serviço.")}
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-accent/50 px-6 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-accent transition-colors duration-300 hover:bg-accent hover:text-accent-foreground"
+            onClick={(e) => {
+              e.preventDefault();
+              openExternalLink(whatsappUrl);
+            }}
+            className="mt-8 inline-flex items-center gap-2 rounded-full border border-accent/50 px-6 py-3.5 text-sm font-bold uppercase tracking-[0.12em] text-accent transition-colors duration-300 hover:bg-accent hover:text-accent-foreground cursor-pointer"
           >
             <MessageCircle className="h-4 w-4" />
             Fale com a RONCAR
